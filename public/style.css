@@ -2,6 +2,13 @@
 	box-sizing: border-box;
 }
 
+body {
+	position: relative;
+	margin:0px;
+	padding:0px;
+	width:100%;
+}
+
 .hidden {
 	display: none;
 }
@@ -23,3 +30,104 @@
 	margin: 15px auto;
 	font-weight: normal;
 }
+
+.footer {
+	background-color: #2E2E2E;
+	color: white;
+	height: 40px;
+	font-family: 'Josefin Slab', serif;
+	padding: 13px;
+}
+
+.greeting-section {
+	padding: 275px;
+	text-align: center;
+}
+
+.landing-page-greeting-section {
+	background-image: url('../images/ocean.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 0;
+}
+
+.landing-page-header {
+	color: white;
+	font-family: 'Josefin Slab', serif;
+	font-size: 75px;
+	padding-top: 50px;
+	margin: 0 auto;
+	width: 70%;
+	font-weight: normal;
+}
+
+.about {
+	padding: 200px 30px 200px 30px;
+}
+
+.about-header {
+	font-family: 'Josefin Slab', serif;
+	font-size: 65px;
+	width: 50%;
+	display: inline-block;
+}
+
+.about-description {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 25px;
+	padding: 30px;
+	width: 47%;
+	display: inline-block;
+	position: absolute;
+	right: 20px;
+}
+
+.lounges {
+	background-color: #F5F5F5;
+	font-family: 'Josefin Slab', serif;
+	padding: 40px;
+	text-align: center;
+}
+
+.lounges-header {
+	font-size: 65px;
+	margin: 10px auto 130px auto;
+}
+
+.lounge-box {
+	display: inline-block;
+	width: 25%;
+	margin: 0 25px;
+}
+
+.lounge-pic {
+	padding: 65px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.rak-pic {
+	background-image: url('../images/flower.jpg');
+}
+
+.pa-pic {
+	background-image: url('../images/jumping.jpg');
+}
+
+.iq-pic {
+	background-image: url('../images/stars.jpg');
+}
+
+.lounge-pic-header {
+	color: white;
+	font-size: 30px;
+}
+
+
+
+
+
+
+
