@@ -14,10 +14,10 @@
 	</nav>
 
 	<!--Page One-->
-	<section class="page-one">
+	<section class="page-one hidden">
 		<!--Greeting section-->
 		<section class="greeting-section landing-page-greeting-section">
-			<h2 class="landing-page-header">Positive mind. Positive life.</h2>
+			<h2 class="page-header">Positive mind. Positive life.</h2>
 		</section>
 		<!--About section-->
 		<section class="about">
@@ -51,38 +51,38 @@
 	</section>
 
 	<!--Page Two-->
-	<section class="page-two hidden">
+	<section class="page-two">
 		<!--Greeting section-->
 		<section class="greeting-section lounge-page-header">
-			<h2>Random Acts of Kindness</h2>
+			<h2 class="page-header">Random Acts of Kindness</h2>
 		</section>
 		<!--Main posts section-->
 		<section class="main-posts-section">
-			<h2 class="lounge-description">Feel free to share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse enjoy your stay!</h2>
+			<h2 class="lounge-page-description">Feel free to share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse other peoples' stories below and enjoy your stay!</h2>
 			<div class="user-post-section">
-				<img src="../images/arrow.png">
-				<h3 class="post">“Yesterday, when checking out at the grocery store, I realized I had forgotten my wallet at home. When I told the cashier as much, the woman behind me insisted on paying for my groceries! What a nice lady!” <h3 class="username">-Annonymous</h3></h3>
-				<img src="../images/arrow-two.png">
+				<img class="arrow left-arrow" src="../images/arrow.png">
+				<img class="arrow right-arrow" src="../images/arrow-two.png">
+				<h3 class="post">"Yesterday, when checking out at the grocery store, I realized I had forgotten my wallet at home. When I told the cashier as much, the woman behind me insisted on paying for my groceries! What a nice lady!” <h3 class="username">-Annonymous</h3></h3>
 				<button class="report-button">Report as innappropriate</button>
 			</div>
 			<form class="user-input-form">
-				<label>Share your thoughts!</label>
-				<input type="text" name="user-thoughts" placeholder="Write your thoughts here...">
-				<button>Submit</button>
+				<label class="form-label">Share your thoughts!</label>
+				<textarea class="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
+				<button class="submit-button">Submit</button>
 			</form>
 		</section>
 		<!--Other-lounges-section-->
-		<section class="other-lounges">
-			<h2 class="other-lounges-header">Other Lounges</h2>
-			<div class="pa-box">
-				<div class="pa-pic">
-					<h3>Personal Achievements</h3>
+		<section class="lounges">
+			<h2 class="lounges-header">Other Lounges</h2>
+			<div class="lounge-box pa-box">
+				<div class="lounge-pic pa-pic">
+					<h3 class="lounge-pic-header">Personal Achievements</h3>
 				</div>
 				<p class="pa-description">Share a personal goal that you recently achieved </p>
 			</div>
-			<div class="iq-box">
-				<div class="iq-pic">
-					<h3>Inspirational Quotes</h3>
+			<div class="lounge-box iq-box">
+				<div class="lounge-pic iq-pic">
+					<h3 class="lounge-pic-header">Inspirational Quotes</h3>
 				</div>
 				<p class="iq-description">Share your favorite inspirational quote(s)</p>
 			</div>

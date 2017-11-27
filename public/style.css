@@ -7,6 +7,7 @@ body {
 	margin:0px;
 	padding:0px;
 	width:100%;
+	font-family: 'Josefin Slab', serif;
 }
 
 .hidden {
@@ -24,7 +25,6 @@ body {
 }
 
 .navbar-header {
-	font-family: 'Josefin Slab', serif;
 	color: white;
 	font-size: 38px;
 	margin: 15px auto;
@@ -35,26 +35,24 @@ body {
 	background-color: #2E2E2E;
 	color: white;
 	height: 40px;
-	font-family: 'Josefin Slab', serif;
 	padding: 13px;
 }
 
 .greeting-section {
-	padding: 275px;
+	padding: 320px;
 	text-align: center;
-}
-
-.landing-page-greeting-section {
-	background-image: url('../images/ocean.jpg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 0;
 }
 
-.landing-page-header {
+.landing-page-greeting-section {
+	background-image: url('../images/ocean.jpg');
+}
+
+.page-header {
 	color: white;
-	font-family: 'Josefin Slab', serif;
 	font-size: 75px;
 	padding-top: 50px;
 	margin: 0 auto;
@@ -67,7 +65,6 @@ body {
 }
 
 .about-header {
-	font-family: 'Josefin Slab', serif;
 	font-size: 65px;
 	width: 50%;
 	display: inline-block;
@@ -85,7 +82,6 @@ body {
 
 .lounges {
 	background-color: #F5F5F5;
-	font-family: 'Josefin Slab', serif;
 	padding: 40px;
 	text-align: center;
 }
@@ -105,7 +101,7 @@ body {
 	padding: 65px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: 50% 50%;
+	background-position: 50% 0;
 }
 
 .rak-pic {
@@ -123,11 +119,113 @@ body {
 .lounge-pic-header {
 	color: white;
 	font-size: 30px;
+	max-width: 170px;
+	margin: 0 auto;
 } 
 
 .lounge-description {
 	font-size: 20px;
 }
+
+/*Page Two*/
+
+.lounge-page-header {
+	background-image: url('../images/flower.jpg');
+	background-size: cover;
+	background-position: 50% 0;
+}
+
+.main-posts-section {
+	padding: 30px;
+	text-align: center;
+}
+
+.lounge-page-description {
+	font-size: 35px;
+	width: 80%;
+	margin: 40px auto 200px auto;
+}
+
+.user-post-section {
+	position: relative;
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+	padding-top: 40px;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 0 2px rgba(0,0,0,0.22);
+}
+
+.arrow {
+	width: 40px;
+	height: 40px;
+	top: 100px;
+	position: absolute;
+}
+
+.left-arrow {
+	left: 10px;
+}
+
+.right-arrow {
+	right: 10px;
+}
+
+.post {
+	display: inline-block;
+	width: 50%;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: lighter;
+	font-size: 23px;
+}
+
+.username {
+	margin-bottom: 30px;
+}
+
+.report-button {
+	background-color: #A80000;
+	color: white;
+}
+
+.user-input-form {
+	margin: 250px 0 100px 0;
+}
+
+.form-label, .submit-button {
+	font-size: 25px;
+	display: block;
+}
+
+.submit-button {
+	margin: 0 auto;
+}
+
+.user-input-box {
+	margin: 20px auto;
+	height: 80px;
+	width: 50%;
+	font-size: 20px;
+	resize: none;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.submit-button {
+	background-color: #2E2E2E;
+	color: white;
+	font-family: 'Josefin Slab', serif;
+	width: 110px;
+	height: 45px;
+}
+
+
+
+/*BUGS:
+
+-Page one lounge pics change size
+-Fix page two header image
+-Make responsive
+
+
+
 
 
 
