@@ -98,7 +98,7 @@ body {
 .lounge-box {
 	display: inline-block;
 	width: 25%;
-	margin: 0 25px;
+	margin: 0 35px;
 }
 
 .lounge-pic {
@@ -123,6 +123,10 @@ body {
 .lounge-pic-header {
 	color: white;
 	font-size: 30px;
+} 
+
+.lounge-description {
+	font-size: 20px;
 }
 
 
