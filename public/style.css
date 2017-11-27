@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+}
+
+.hidden {
+	display: none;
+}
+
+.navbar {
+	background-color: #2E2E2E;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	text-align: center;
+}
+
+.navbar-header {
+	font-family: 'Josefin Slab', serif;
+	color: white;
+	font-size: 38px;
+	margin: 15px auto;
+	font-weight: normal;
+}
