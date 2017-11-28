@@ -39,13 +39,13 @@ export default class Lounge extends React.Component {
                 <div className="lounge-pic pa-pic">
                     <h3 className="lounge-pic-header">Personal Achievements</h3>
                 </div>
-                <p className="pa-description">Share a personal goal that you recently achieved </p>
+                <p className="lounge-description">Share a personal goal that you recently achieved </p>
             </div>
             <div className="lounge-box iq-box">
                 <div className="lounge-pic iq-pic">
                     <h3 className="lounge-pic-header">Inspirational Quotes</h3>
                 </div>
-                <p className="iq-description">Share your favorite inspirational quote(s)</p>
+                <p className="lounge-description">Share your favorite inspirational quote(s)</p>
             </div>
         </section>
     </section>
