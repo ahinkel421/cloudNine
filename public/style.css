@@ -61,7 +61,7 @@ body {
 }
 
 .about {
-	padding: 200px 30px 200px 30px;
+	padding: 200px 30px;
 }
 
 .about-header {
@@ -216,16 +216,60 @@ body {
 	height: 45px;
 }
 
-@media (max-width: 1260px) {
+
+/*Media Queries*/
+
+
+@media (max-width: 1275px) {
 	.page-header {
 		font-size: 69px;
 		width: 95%;
 	}
+	.lounges {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.lounge-pic {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1160px) {
 	.greeting-section {
-		padding: 240px;
+		padding-left: 240px;
+		padding-right: 240px;
+	}
+	.lounge-description {
+		font-size: 17px;
+	}
+}
+
+@media (max-width: 990px) {
+	.lounge-box {
+		display: block;
+		margin: 50px auto;
+		width: 45%;
+	}
+	.lounge-pic {
+		background-position: 50% -30px;
+	}
+
+	.about {
+		text-align: center;
+		padding: 90px 30px;
+	}
+
+	.about-header {
+		width: 90%;
+	}
+
+	.about-description {
+		display: block;
+		position: static;
+		margin: 0 auto;
+		width: 85%;
+		line-height: 1.5;
 	}
 }
 
@@ -233,6 +277,44 @@ body {
 	.greeting-section {
 		padding-left: 0;
 		padding-right: 0;
+	}
+	.about-header {
+		width: 98%;
+	}
+
+	.about-description {
+		width: 90%;
+		line-height: 1.5;
+		font-size: 20px;
+	}
+	.lounges-header, .about-header  {
+		font-size: 55px;
+	}
+}
+
+@media (max-width: 800px) {
+	.lounge-box {
+		width: 65%;
+	}
+	.lounge-pic {
+		background-position: 50% -60px;
+	}
+}
+@media (max-width: 700px) {
+	.about-header {
+		width: 100%;
+		font-size: 45px;
+	}
+	.about-description {
+		width: 100%;
+		font-size: 17px;
+	}
+}
+
+@media (max-width: 600px) {
+	.lounge-pic {
+		padding: 20px;
+		background-position: 50% -45px;
 	}
 }
 
