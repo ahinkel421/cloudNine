@@ -1,6 +1,7 @@
 import React from 'react';
 import './lounge.css';
 import Navbar from './navbar'
+import Footer from './footer';
 
 
 export default class Lounge extends React.Component {
@@ -46,9 +47,7 @@ export default class Lounge extends React.Component {
                         </div>
                     </section>
                 </section>
-                <footer className="footer">
-                    <span className="credit">Created by Adam Hinkel</span>
-                </footer>
+                <Footer />
             </div>
         );
     }

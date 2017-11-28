@@ -1,6 +1,7 @@
 import React from 'react';
 import './landing-page.css';
 import Navbar from './navbar';
+import Footer from './footer';
 
 export default class LandingPage extends React.Component {
 
@@ -43,10 +44,7 @@ export default class LandingPage extends React.Component {
                         </div>
                     </section>
                 </section>
-                
-                <footer className="footer">
-                    <span className="credit">Created by Adam Hinkel</span>
-                </footer>
+                <Footer />
             </div>
         );
     }
