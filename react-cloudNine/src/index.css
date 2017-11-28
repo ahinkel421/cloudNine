@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+	margin:0px;
+	padding:0px;
+	width:100%;
+	font-family: 'Josefin Slab', serif;
+}
+
+.hidden {
+	display: none;
+}
+
