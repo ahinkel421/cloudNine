@@ -9,7 +9,7 @@ import LandingPage from './components/landing-page';
 import Lounge from './components/lounge';
 
 ReactDOM.render(
-    <Lounge />,
+    <LandingPage />,
     document.getElementById('root')
 );
 
