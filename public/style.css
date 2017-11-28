@@ -54,7 +54,7 @@ body {
 .page-header {
 	color: white;
 	font-size: 75px;
-	padding-top: 50px;
+	padding-top: 30px;
 	margin: 0 auto;
 	width: 70%;
 	font-weight: normal;
@@ -216,6 +216,39 @@ body {
 	height: 45px;
 }
 
+@media (max-width: 1260px) {
+	.page-header {
+		font-size: 69px;
+		width: 95%;
+	}
+}
+
+@media (max-width: 1100px) {
+	.greeting-section {
+		padding: 240px;
+	}
+}
+
+@media (max-width: 900px) {
+	.greeting-section {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+@media (max-width: 450px) {
+	.page-header {
+		width: 100%;
+		font-size: 60px;
+	}
+}
+
+@media (min-width: 1450px) {
+	.page-header {
+		font-size: 90px;
+		max-width: 749px;
+	}
+}
 
 
 /*BUGS:
