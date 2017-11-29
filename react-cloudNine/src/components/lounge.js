@@ -3,6 +3,7 @@ import './lounge.css';
 import Navbar from './navbar'
 import Footer from './footer';
 import UserPost from './user-post';
+import LoungeBox from './lounge-box';
 
 
 export default class Lounge extends React.Component {
@@ -34,12 +35,7 @@ export default class Lounge extends React.Component {
                     {/*Other-lounges-section*/}
                     <section className="lounges">
                         <h2 className="lounges-header">Other Lounges</h2>
-                        <div className="lounge-box pa-box">
-                            <div className="lounge-pic pa-pic">
-                                <h3 className="lounge-pic-header">Personal Achievements</h3>
-                            </div>
-                            <p className="lounge-description">Share a personal goal that you recently achieved </p>
-                        </div>
+                        <LoungeBox boxPic='pa-pic' loungeName="Personal Achievements" loungeDescription="Share a personal goal that you recently achieved"/>
                         <div className="lounge-box iq-box">
                             <div className="lounge-pic iq-pic">
                                 <h3 className="lounge-pic-header">Inspirational Quotes</h3>

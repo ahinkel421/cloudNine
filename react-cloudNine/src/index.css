@@ -43,43 +43,6 @@ body {
 	margin: 10px auto 130px auto;
 }
 
-.lounge-box {
-	display: inline-block;
-	width: 25%;
-	margin: 0 35px;
-}
-
-.lounge-pic {
-	padding: 65px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 50% 0;
-}
-
-.lounge-pic-header {
-	color: white;
-	font-size: 30px;
-	max-width: 170px;
-	margin: 0 auto;
-} 
-
-.lounge-description {
-	font-size: 20px;
-	margin-top: 15px;
-}
-
-.rak-pic {
-	background-image: url('/images/flower.jpg');
-}
-
-.pa-pic {
-	background-image: url('/images/jumping.jpg');
-}
-
-.iq-pic {
-	background-image: url('/images/stars.jpg');
-}
-
 
 /*Media Queries*/
 
@@ -109,17 +72,6 @@ body {
 	}
 }
 
-@media (max-width: 990px) {
-	.lounge-box {
-		display: block;
-		margin: 50px auto;
-		width: 45%;
-	}
-	.lounge-pic {
-		background-position: 50% -30px;
-	}
-}
-
 @media (max-width: 900px) {
 	.greeting-section {
 		padding-left: 0;
@@ -128,22 +80,6 @@ body {
 	
 	.lounges-header {
 		font-size: 55px;
-	}
-}
-
-@media (max-width: 800px) {
-	.lounge-box {
-		width: 65%;
-	}
-	.lounge-pic {
-		background-position: 50% -60px;
-	}
-}
-
-@media (max-width: 600px) {
-	.lounge-pic {
-		padding: 20px;
-		background-position: 50% -45px;
 	}
 }
 

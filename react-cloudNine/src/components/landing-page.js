@@ -2,6 +2,7 @@ import React from 'react';
 import './landing-page.css';
 import Navbar from './navbar';
 import Footer from './footer';
+import LoungeBox from './lounge-box';
 
 export default class LandingPage extends React.Component {
 
