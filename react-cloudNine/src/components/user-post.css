@@ -1,0 +1,11 @@
+.post {
+	display: inline-block;
+	width: 50%;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: lighter;
+	font-size: 23px;
+}
+
+.username {
+	margin: 30px;
+}

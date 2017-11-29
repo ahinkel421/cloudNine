@@ -2,6 +2,7 @@ import React from 'react';
 import './lounge.css';
 import Navbar from './navbar'
 import Footer from './footer';
+import UserPost from './user-post';
 
 
 export default class Lounge extends React.Component {
@@ -21,7 +22,7 @@ export default class Lounge extends React.Component {
                         <div className="user-post-section">
                             <img className="arrow left-arrow" src="../images/arrow.png" />
                             <img className="arrow right-arrow" src="../images/arrow-two.png" />
-                            <h3 className="post">"Yesterday, when checking out at the grocery store, I realized I had forgotten my wallet at home. When I told the cashier as much, the woman behind me insisted on paying for my groceries! What a nice lady!” <p className="username">-Annonymous</p></h3>
+                            <UserPost post="I helped a senior citizen across the street. It felt great to help out!" username="Mike"/>
                             <button className="report-button">Report as innappropriate</button>
                         </div>
                         <form className="user-input-form">
