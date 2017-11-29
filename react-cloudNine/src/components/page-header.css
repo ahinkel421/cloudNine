@@ -7,7 +7,7 @@
 	background-position: 50% 0;
 }
 
-.landing-page-greeting-section {
+.landing-page-header {
 	background-image: url('/images/ocean.jpg');
 }
 
@@ -17,12 +17,24 @@
 	background-position: 50% 0;
 }
 
+.pa-page-header {
+	background-image: url('/images/jumping.jpg');
+	background-size: cover;
+	background-position: 50% 0;
+}
+
+.iq-page-header {
+	background-image: url('/images/stars.jpg');
+	background-size: cover;
+	background-position: 50% 0;
+}
+
 .page-header {
 	color: white;
 	font-size: 75px;
 	padding-top: 30px;
 	margin: 0 auto;
-	width: 70%;
+	width: 75%;
 	font-weight: normal;
 }
 
@@ -33,18 +45,18 @@
 @media (max-width: 1275px) {
 	.page-header {
 		font-size: 69px;
-		width: 95%;
+		width: 98%;
 	}
 }
 
 @media (max-width: 1160px) {
 	.greeting-section {
-		padding-left: 240px;
-		padding-right: 240px;
+		padding-left: 250px;
+		padding-right: 250px;
 	}
 }
 
-@media (max-width: 900px) {
+@media (max-width: 930px) {
 	.greeting-section {
 		padding-left: 0;
 		padding-right: 0;

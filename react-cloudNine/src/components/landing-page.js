@@ -3,6 +3,7 @@ import './landing-page.css';
 import Navbar from './navbar';
 import Footer from './footer';
 import LoungeBox from './lounge-box';
+import PageHeader from './page-header';
 
 export default class LandingPage extends React.Component {
 
@@ -11,11 +12,9 @@ export default class LandingPage extends React.Component {
             <div>
                 <Navbar />
                 <section className="page-one">
-                
+
                     {/*Greeting section*/}
-                    <section className="greeting-section landing-page-greeting-section">
-                        <h2 className="page-header">Positive mind.</h2><h2 className="page-header">Positive life.</h2>
-                    </section>
+                    <PageHeader pic="landing-page-header" text="Postitive mind. Positive life." />
 
                     {/*About section*/}
                     <section className="about">

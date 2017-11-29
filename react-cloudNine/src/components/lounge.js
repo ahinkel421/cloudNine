@@ -4,10 +4,13 @@ import Navbar from './navbar'
 import Footer from './footer';
 import UserPost from './user-post';
 import LoungeBox from './lounge-box';
-import PageHeader from './page-header'
+import PageHeader from './page-header';
 
 
 export default class Lounge extends React.Component {
+    //Need to keep track of which lounge user is in.
+    //If user is in Personal Achievements, render personal achievements
+    //Also, lounges at the bottom need to be the two OTHER lounges
 
     render() {
         return (
@@ -15,7 +18,7 @@ export default class Lounge extends React.Component {
                 <Navbar />
                 <section className="page-two">
                     {/*Greeting section*/}
-                    <PageHeader />
+                    <PageHeader pic="pa-page-header" text="Personal Achievements" />
                     {/*Main posts section*/}
                     <section className="main-posts-section">
                         <h2 className="lounge-page-description">Feel free to share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse other peoples' stories below and enjoy your stay!</h2>
