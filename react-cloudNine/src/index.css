@@ -10,32 +10,6 @@ body {
 	font-family: 'Josefin Slab', serif;
 }
 
-.hidden {
-	display: none;
-}
-
-.greeting-section {
-	padding: 320px;
-	text-align: center;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 50% 0;
-}
-
-.page-header {
-	color: white;
-	font-size: 75px;
-	padding-top: 30px;
-	margin: 0 auto;
-	width: 70%;
-	font-weight: normal;
-}
-
-.page-header:hover {
-	cursor: default;
-}
-
 .lounges {
 	background-color: #F5F5F5;
 	padding: 40px;
@@ -47,61 +21,20 @@ body {
 	margin: 10px auto 130px auto;
 }
 
-.lounge-pic:hover, .lounge-description:hover {
-	cursor: pointer;
-}
-
 
 /*Media Queries*/
 
 
 @media (max-width: 1275px) {
-	.page-header {
-		font-size: 69px;
-		width: 95%;
-	}
 	.lounges {
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.lounge-pic {
-		padding-left: 0;
-		padding-right: 0;
-	}
-}
-
-@media (max-width: 1160px) {
-	.greeting-section {
-		padding-left: 240px;
-		padding-right: 240px;
-	}
-	.lounge-description {
-		font-size: 17px;
-	}
 }
 
 @media (max-width: 900px) {
-	.greeting-section {
-		padding-left: 0;
-		padding-right: 0;
-	}
-	
 	.lounges-header {
 		font-size: 55px;
-	}
-}
-
-@media (max-width: 450px) {
-	.page-header {
-		width: 100%;
-		font-size: 60px;
-	}
-}
-
-@media (min-width: 1450px) {
-	.page-header {
-		font-size: 90px;
-		max-width: 749px;
 	}
 }
 

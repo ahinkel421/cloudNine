@@ -35,6 +35,10 @@
 	background-image: url('/images/stars.jpg');
 }
 
+.lounge-pic:hover, .lounge-description:hover {
+	cursor: pointer;
+}
+
 @media (max-width: 1275px) {
 	.lounge-pic {
 		padding-left: 0;
