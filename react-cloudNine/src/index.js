@@ -8,7 +8,7 @@ import LandingPage from './components/landing-page';
 import Lounge from './components/lounge';
 
 ReactDOM.render(
-    <Lounge />,
+    <LandingPage />,
     document.getElementById('root')
 );
 
@@ -17,4 +17,4 @@ ReactDOM.render(
 //Navbar +
 //Footer +
 //UserInput (with nickname as a prop) +
-//LoungeBox
+//LoungeBox +

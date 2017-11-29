@@ -35,13 +35,16 @@ export default class Lounge extends React.Component {
                     {/*Other-lounges-section*/}
                     <section className="lounges">
                         <h2 className="lounges-header">Other Lounges</h2>
-                        <LoungeBox boxPic='pa-pic' loungeName="Personal Achievements" loungeDescription="Share a personal goal that you recently achieved"/>
-                        <div className="lounge-box iq-box">
-                            <div className="lounge-pic iq-pic">
-                                <h3 className="lounge-pic-header">Inspirational Quotes</h3>
-                            </div>
-                            <p className="lounge-description">Share your favorite inspirational quote(s)</p>
-                        </div>
+                        <LoungeBox 
+                            boxPic='pa-pic' 
+                            loungeName="Personal Achievements" 
+                            loungeDescription="Share a personal goal that you recently achieved" 
+                        />
+                        <LoungeBox 
+                            boxPic='iq-pic' 
+                            loungeName="Inspirational Quotes" 
+                            loungeDescription="Share your favorite inspirational quote(s)" 
+                        />
                     </section>
                 </section>
                 <Footer />
