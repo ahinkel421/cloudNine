@@ -32,6 +32,10 @@ body {
 	font-weight: normal;
 }
 
+.page-header:hover {
+	cursor: default;
+}
+
 .lounges {
 	background-color: #F5F5F5;
 	padding: 40px;
@@ -41,6 +45,10 @@ body {
 .lounges-header {
 	font-size: 65px;
 	margin: 10px auto 130px auto;
+}
+
+.lounge-pic:hover, .lounge-description:hover {
+	cursor: pointer;
 }
 
 

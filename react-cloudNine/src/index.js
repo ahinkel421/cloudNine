@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import LandingPage from './components/landing-page';
-import Lounge from './components/lounge';
+import App from './components/app'
+
+// import LandingPage from './components/landing-page';
+// import Lounge from './components/lounge';
 
 ReactDOM.render(
-    <LandingPage />,
+    <App />,
     document.getElementById('root')
 );
 
@@ -18,3 +20,4 @@ ReactDOM.render(
 //Footer +
 //UserInput (with nickname as a prop) +
 //LoungeBox +
+//LoungeHeader
