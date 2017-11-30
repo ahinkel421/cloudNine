@@ -6,10 +6,11 @@ mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
 const {Lounge} = require('./models');
+var cors = require('cors')
 
 const app = express();
 app.use(bodyParser.json());
-
+app.use(cors())
 
 app.get('/lounges', (req, res) => {
   Lounge
