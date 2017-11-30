@@ -24,9 +24,9 @@ app.get('/lounges', (req, res) => {
     });
 });
 
-app.get('/:loungeId/lounges', (req, res) => {
+app.get('/lounges/:loungeId', (req, res) => {
 
-  Post
+  Lounge
     .find()
     .then(lounges => {
       res.json({
