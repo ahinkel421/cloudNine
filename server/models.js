@@ -1,19 +1,27 @@
 const mongoose = require('mongoose');
 
-const postSchema = mongoose.Schema({
-  post: {type: String},
-  author: {type: String, required: false},
-  lounge: {type: String},
+const loungeSchema = mongoose.Schema({
+  name: {type: String, required:true},
+  picture: {type: String, required: true},
+  description: {type: String, required: true},
+  posts:[
+    {
+      content: {type: String, required: true},
+      author: {type: String, required: false},
+    }
+  ]
 });
 
-postSchema.methods.apiRepr = function() {
+
+loungeSchema.methods.apiRepr = function() {
   return {
     id: this._id,
-    post: this.post,
-    author: this.author,
-    lounge: this.lounge
+    name: this.name,
+    picture: this.picture,
+    description: this.description,
+    posts: this.posts
   };
 }
 
-const Post = mongoose.model('Post', postSchema);
-module.exports = {Post};
+const Lounge = mongoose.model('Lounge', loungeSchema);
+module.exports = {Lounge};

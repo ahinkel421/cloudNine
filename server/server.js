@@ -5,19 +5,33 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
-const {Post} = require('./models');
+const {Lounge} = require('./models');
 
 const app = express();
 app.use(bodyParser.json());
 
 
-app.get('/posts', (req, res) => {
+app.get('/lounges', (req, res) => {
+  Lounge
+    .find()
+    .then(lounges => {
+      res.json({ lounges: lounges.map( (lounge) => lounge.apiRepr()) });
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+    });
+});
+
+app.get('/:loungeId/lounges', (req, res) => {
+
   Post
     .find()
-    .then(posts => {
+    .then(lounges => {
       res.json({
-        posts: posts.map(
-          (post) => post.apiRepr())
+        lounges: lounges.map(
+          (lounge) => lounge.apiRepr())
       });
     })
     .catch(
@@ -27,20 +41,9 @@ app.get('/posts', (req, res) => {
     });
 });
 
-
-app.get('/posts/:id', (req, res) => {
-  Post
-    .findById(req.params.id)
-    .then(post =>res.json(post.apiRepr()))
-    .catch(err => {
-      console.error(err);
-        res.status(500).json({message: 'Internal server error'})
-    });
-});
-
-/*
-app.post('/posts', (req, res) => {
-  const requiredFields = ['name', 'borough', 'cuisine'];
+// not used frontend. use postman to create a lounge
+app.post('/lounges', (req, res) => {
+  const requiredFields = ['name', 'picture', 'description'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -50,24 +53,23 @@ app.post('/posts', (req, res) => {
     }
   }
 
-  Post
+  Lounge
     .create({
       name: req.body.name,
-      borough: req.body.borough,
-      cuisine: req.body.cuisine,
-      grades: req.body.grades,
-      address: req.body.address})
+      picture: req.body.picture,
+      description: req.body.description,
+    })
     .then(
-      post => res.status(201).json(post.apiRepr()))
+      lounge => res.status(201).json(lounge.apiRepr()))
     .catch(err => {
       console.error(err);
       res.status(500).json({message: 'Internal server error'});
     });
 });
-*/
+
 
 /*
-app.put('/posts/:id', (req, res) => {
+app.put('/lounges/:id', (req, res) => {
   // ensure that the id in the request path and the one in request body match
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     const message = (
@@ -92,16 +94,16 @@ app.put('/posts/:id', (req, res) => {
   Post
     // all key/value pairs in toUpdate will be updated -- that's what `$set` does
     .findByIdAndUpdate(req.params.id, {$set: toUpdate})
-    .then(post => res.status(204).end())
+    .then(lounge => res.status(204).end())
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 */
 
 /*
-app.delete('/posts/:id', (req, res) => {
+app.delete('/lounges/:id', (req, res) => {
   Post
     .findByIdAndRemove(req.params.id)
-    .then(post => res.status(204).end())
+    .then(lounge => res.status(204).end())
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 */
