@@ -9,22 +9,24 @@ import PageHeader from './page-header';
 // TODO: broken.
 
 export default class Lounge extends React.Component {
-    //Need to keep track of which lounge user is in.
-    //If user is in Personal Achievements, render personal achievements
-    //Also, lounges at the bottom need to be the two OTHER lounges
-    super(props)
-    this.state = {lounge:{}}
-  }
-  componentDidMount(){
-    var self = this
-    fetch('http://localhost:8080/lounges/5a204645aa7ac461feffba81').then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      self.setState({
-        lounge:data.lounge
-      })
-    });
-  }
+    
+    constructor(props) {
+        super(props);
+        this.state = {lounge:{}}
+    }
+
+    componentDidMount(){
+        let self = this;
+        fetch('http://localhost:8080/lounges/5a204645aa7ac461feffba81')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            self.setState({
+                lounge: data.lounge
+            })
+        });
+    }
 
 
     render() {

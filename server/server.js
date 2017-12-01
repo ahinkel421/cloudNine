@@ -6,97 +6,110 @@ mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
 const {Lounge} = require('./models');
-var cors = require('cors')
+const cors = require('cors')
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
+
+//Used to get all of the different lounges
 app.get('/lounges', (req, res) => {
   Lounge
   .find()
   .then(lounges => {
     res.json({ lounges: lounges.map( (lounge) => lounge.apiRepr()) });
   })
+  .catch( err => {
+    console.error(err);
+    res.status(500).json({message: 'Internal server error'});
+  });
+});
+
+
+//Used to get a specific lounge by Id
+app.get('/lounges/:loungeId', (req, res) => {
+  Lounge
+  .findById(req.params.loungeId)
+  .then(lounge => {
+    res.json( lounge.apiRepr() )
+  })
   .catch(
     err => {
       console.error(err);
       res.status(500).json({message: 'Internal server error'});
-    });
+    }
+  );
+});
+
+
+// not used frontend.
+// use postman to create a lounge
+app.post('/lounges', (req, res) => {
+  const requiredFields = ['name', 'picture', 'description'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+
+  Lounge
+  .create({
+    name: req.body.name,
+    picture: req.body.picture,
+    description: req.body.description,
+  })
+  .then(lounge => res.status(201).json(lounge.apiRepr()))
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({message: 'Internal server error'});
   });
-
-  app.get('/lounges/:loungeId', (req, res) => {
-
-    Lounge
-    .findById(req.params.loungeId)
-    .then(lounge => {
-      res.json( lounge.apiRepr() )
-    })
-    .catch(
-      err => {
-        console.error(err);
-        res.status(500).json({message: 'Internal server error'});
-      });
-    });
+});
 
 
 
-    app.post('/lounges/:loungeId/post', (req, res) => {
 
-      //const requiredFields = ['content'];
-      let newPost = {
-        name: req.body.name || "a",
-        content: req.body.content,
-      }
-      Lounge
-      .findById(req.params.loungeId)
-      .then(lounge => {
 
-          // TODO; Now you have lounge, add newPost to that lounge.x
-      // Some ideas. Remember this is async
-      // lounge.posts.push(newnewPostLounge)
+// TODO; Now that you have a specific lounge, add a newPost to that lounge.
+      // Some ideas. Remember this is async (return a promise maybe?)
+      // lounge.posts.push(newPost)
       // lounge.save.then(()=>{
       // res.json( lounge.apiRepr() )
-      //  })
+      // })
 
-      })
-      .catch(
-        err => {
-          console.error(err);
-          res.status(500).json({message: 'Internal server error'});
-        });
-      })
+app.post('/lounges/:loungeId/post', (req, res) => {
 
+  const requiredFields = ['content'];
+  const field = requiredFields[0];
 
+  if(!(field in req.body)) {
+    const message = `Missing \`${field}\` in request body`
+    console.error(message);
+    return res.status(400).send(message);
+  }
 
+  let newPost = {
+    name: req.body.name,
+    content: req.body.content
+  }
 
+  Lounge
+  .findById(req.params.loungeId)
+  .then(lounge => {
+    lounge.posts.push(newPost);
+    lounge.save().then(() => {
+      res.status(201).json(lounge.apiRepr())
+    })  
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({message: 'Internal server error'});
+  });
 
-      // not used frontend.
-      // use postman to create a lounge
-      app.post('/lounges', (req, res) => {
-        const requiredFields = ['name', 'picture', 'description'];
-        for (let i=0; i<requiredFields.length; i++) {
-          const field = requiredFields[i];
-          if (!(field in req.body)) {
-            const message = `Missing \`${field}\` in request body`
-            console.error(message);
-            return res.status(400).send(message);
-          }
-        }
-
-        Lounge
-        .create({
-          name: req.body.name,
-          picture: req.body.picture,
-          description: req.body.description,
-        })
-        .then(
-          lounge => res.status(201).json(lounge.apiRepr()))
-          .catch(err => {
-            console.error(err);
-            res.status(500).json({message: 'Internal server error'});
-          });
-        });
+});
 
 
         /*
@@ -130,26 +143,12 @@ app.get('/lounges', (req, res) => {
 });
 */
 
-/*
-app.delete('/lounges/:id', (req, res) => {
-Post
-.findByIdAndRemove(req.params.id)
-.then(lounge => res.status(204).end())
-.catch(err => res.status(500).json({message: 'Internal server error'}));
-});
-*/
-
-// catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
 });
 
-// closeServer needs access to a server object, but that only
-// gets created when `runServer` runs, so we declare `server` here
-// and then assign a value to it in run
 let server;
 
-// this function connects to our database, then starts the server
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
 
   return new Promise((resolve, reject) => {
@@ -169,8 +168,6 @@ function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   });
 }
 
-// this function closes the server, and returns a promise. we'll
-// use it in our integration tests later.
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
@@ -185,8 +182,6 @@ function closeServer() {
   });
 }
 
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
   runServer().catch(err => console.error(err));
 };
