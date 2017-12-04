@@ -1,4 +1,4 @@
 exports.DATABASE_URL = process.env.DATABASE_URL ||
                        global.DATABASE_URL ||
-                      'mongodb://test:test123@ds125556.mlab.com:25556/cloudnine';
+                      'mongodb://localhost/cloudnine-app';
 exports.PORT = process.env.PORT || 8080;
