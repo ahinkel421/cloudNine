@@ -1,12 +1,11 @@
 import React from 'react';
 import './lounge.css';
-import Navbar from './navbar'
-import Footer from './footer';
+
+
 import UserPost from './user-post';
 import LoungeBox from './lounge-box';
 import PageHeader from './page-header';
-const LOUNGE_ID="5a204645aa7ac461feffba81"
-// TODO: broken.
+
 
 export default class Lounge extends React.Component {
   //Need to keep track of which lounge user is in.
@@ -15,6 +14,8 @@ export default class Lounge extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      lounges:[],
+      currentPost:0,
       lounge: {
         posts:[
           {
@@ -25,34 +26,50 @@ export default class Lounge extends React.Component {
       },
       currentPost: 0
     }
+
   }
 
   componentDidMount(){
     var self = this;
-    fetch(`http://localhost:8080/lounges/${LOUNGE_ID}`)
+    fetch(`http://localhost:8080/lounges/${this.props.match.params.loungeId}`)
     .then(function(response) {
       return response.json();
     })
     .then(function(lounge) {
       let max = lounge.posts.length - 1;
       let random = Math.floor(Math.random() * max);
+      if(random>0){
+        self.setState({
+          lounge: lounge,
+          currentPost: random
+        })
+      }
+
+    });
+
+    fetch('http://localhost:8080/lounges').then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
       self.setState({
-        lounge: lounge,
-        currentPost: random
+        lounges:data.lounges
       })
     });
+
   }
-  
+
   //TODO: Make arrows call random post (onClick call function)
 
   createNewPost(e) {
     e.preventDefault();
+
     var post = {
       name: this.name.value || "Anonymous",
       content: this.content.value
     }
+
     //POST request to API
-    fetch(`http://localhost:8080/lounges/${LOUNGE_ID}`, {
+    fetch(`http://localhost:8080/lounges/${this.props.match.params.loungeId}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -63,6 +80,8 @@ export default class Lounge extends React.Component {
       //If post.name === "" it equals "anonymous?" Or change on server?...
       body: JSON.stringify(post)
     })
+    this.content.value=""
+    this.name.value=""
   }
 
   randomPost() {
@@ -74,12 +93,22 @@ export default class Lounge extends React.Component {
   }
 
   render() {
+    let loungesArray = this.state.lounges.map((lounge, i) => (
+      <LoungeBox
+        boxPic='iq-pic'
+        key={i}
+        picURL={lounge.picture}
+        loungeName={lounge.name}
+        loungeDescription={lounge.description}
+        loungeId={lounge.id}
+      />))
+
 
     let post = this.state.lounge.posts[this.state.currentPost];
 
   return (
     <div>
-      <Navbar onClick={this.props.onClick} />
+
       <section className="page-two">
 
         {/*Greeting section*/}
@@ -105,19 +134,10 @@ export default class Lounge extends React.Component {
         {/*Other-lounges-section*/}
         <section className="lounges">
           <h2 className="lounges-header">Other Lounges</h2>
-          <LoungeBox
-            boxPic='pa-pic'
-            loungeName="Personal Achievements"
-            loungeDescription="Share a personal goal that you recently achieved"
-            />
-          <LoungeBox
-            boxPic='iq-pic'
-            loungeName="Inspirational Quotes"
-            loungeDescription="Share your favorite inspirational quote(s)"
-            />
+      {loungesArray}
         </section>
       </section>
-      <Footer />
+
     </div>
   );
 }

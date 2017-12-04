@@ -1,7 +1,7 @@
 import React from 'react';
 import './landing-page.css';
-import Navbar from './navbar';
-import Footer from './footer';
+
+
 import LoungeBox from './lounge-box';
 import PageHeader from './page-header';
 
@@ -34,11 +34,12 @@ export default class LandingPage extends React.Component {
         picURL={lounge.picture}
         loungeName={lounge.name}
         loungeDescription={lounge.description}
+        loungeId={lounge.id}
       />))
 
     return (
       <div>
-      <Navbar />
+
       <section className="page-one">
 
       {/*Greeting section*/}
@@ -61,7 +62,7 @@ export default class LandingPage extends React.Component {
 
       </section>
       </section>
-      <Footer />
+
       </div>
     );
   }
