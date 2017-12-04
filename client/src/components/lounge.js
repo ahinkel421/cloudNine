@@ -14,9 +14,17 @@ export default class Lounge extends React.Component {
   //Also, lounges at the bottom need to be the two OTHER lounges
   constructor(props){
     super(props);
-    this.state = {lounge:{}}
-
-    // this.createNewPost = this.createNewPost.bind(this);
+    this.state = {
+      lounge: {
+        posts:[
+          {
+            "name": 'Adam',
+            "content": "this is my post"
+          }
+        ]
+      },
+      currentPost: 0
+    }
   }
 
   componentDidMount(){
@@ -25,18 +33,22 @@ export default class Lounge extends React.Component {
     .then(function(response) {
       return response.json();
     })
-    .then(function(data) {
+    .then(function(lounge) {
+      let max = lounge.posts.length - 1;
+      let random = Math.floor(Math.random() * max);
       self.setState({
-        lounge:data.lounge
+        lounge: lounge,
+        currentPost: random
       })
     });
   }
-
+  
+  //TODO: Make arrows call random post (onClick call function)
 
   createNewPost(e) {
     e.preventDefault();
     var post = {
-      name: this.name.value,
+      name: this.name.value || "Anonymous",
       content: this.content.value
     }
     //POST request to API
@@ -46,18 +58,24 @@ export default class Lounge extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        name: post.name,
-        content: post.content
-      })
+      //When posting from postman, anonymous works.
+      //When posting from browser, name is in request body is technically blank.
+      //If post.name === "" it equals "anonymous?" Or change on server?...
+      body: JSON.stringify(post)
     })
-
-    //TODO: POST post HERE TO BACKEND
-
   }
 
+  randomPost() {
+    let max = this.state.lounge.posts.length - 1;
+    let random = Math.floor(Math.random() * max);
+    this.setState({
+      currentPost: random
+    });
+  }
 
   render() {
+
+    let post = this.state.lounge.posts[this.state.currentPost];
 
   return (
     <div>
@@ -73,7 +91,7 @@ export default class Lounge extends React.Component {
           <div className="user-post-section">
             <img className="arrow left-arrow" src="../images/arrow.png" />
             <img className="arrow right-arrow" src="../images/arrow-two.png" />
-            <UserPost post="I helped a senior citizen across the street. It felt great to help out!" username="Mike"/>
+            <UserPost post={post.content} username={post.name}/>
             <button className="report-button">Report as innappropriate</button>
           </div>
           <form className="user-input-form">
