@@ -80,7 +80,7 @@ app.post('/lounges', (req, res) => {
       // res.json( lounge.apiRepr() )
       // })
 
-app.post('/lounges/:loungeId/post', (req, res) => {
+app.post('/lounges/:loungeId/', (req, res) => {
 
   const requiredFields = ['content'];
   const field = requiredFields[0];
@@ -92,9 +92,11 @@ app.post('/lounges/:loungeId/post', (req, res) => {
   }
 
   let newPost = {
-    name: req.body.name,
+    author: req.body.author,
     content: req.body.content
   }
+
+
 
   Lounge
   .findById(req.params.loungeId)
@@ -102,7 +104,7 @@ app.post('/lounges/:loungeId/post', (req, res) => {
     lounge.posts.push(newPost);
     lounge.save().then(() => {
       res.status(201).json(lounge.apiRepr())
-    })  
+    })
   })
   .catch(err => {
     console.error(err);
@@ -122,19 +124,16 @@ app.post('/lounges/:loungeId/post', (req, res) => {
         console.error(message);
         return res.status(400).json({message: message});
       }
-
       // we only support a subset of fields being updateable.
       // if the user sent over any of the updatableFields, we udpate those values
       // in document
       const toUpdate = {};
       const updateableFields = ['name', 'borough', 'cuisine', 'address'];
-
       updateableFields.forEach(field => {
       if (field in req.body) {
       toUpdate[field] = req.body[field];
     }
   });
-
   Post
   // all key/value pairs in toUpdate will be updated -- that's what `$set` does
   .findByIdAndUpdate(req.params.id, {$set: toUpdate})
