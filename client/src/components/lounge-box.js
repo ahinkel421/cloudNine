@@ -7,7 +7,7 @@ export default function LoungeBox(props) {
 		return(
 			<div className="lounge-box">
 				<Link to={`/lounge/${props.loungeId}`}>
-    			<div className={`lounge-pic ${props.boxPic}`}>
+    			<div className="lounge-pic" style={`backgound-img:url(${props.boxPic})`}>
 
     				<h3 className="lounge-pic-header">{props.loungeName}</h3>
     			</div>
