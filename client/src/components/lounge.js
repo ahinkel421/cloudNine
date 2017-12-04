@@ -61,7 +61,7 @@ export default class Lounge extends React.Component {
           <form className="user-input-form">
             <label className="form-label">Share your thoughts!</label>
             <textarea ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
-            <input ref={name => this.name = name} type="text" placeholder="Write your name here..."></input>
+            <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
           <button className="submit-button" onClick={e => this.createNewPost(e)}>Submit</button>
           </form>
         </section>
