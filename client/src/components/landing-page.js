@@ -22,20 +22,36 @@ export default class LandingPage extends React.Component {
       self.setState({
         lounges:data.lounges
       })
+      console.log(data.lounges)
     });
   }
 
   render() {
 
-    let loungesArray = this.state.lounges.map((lounge, i) => (
-      <LoungeBox
-        boxPic='iq-pic'
-        key={i}
-        picURL={lounge.picture}
-        loungeName={lounge.name}
-        loungeDescription={lounge.description}
-        loungeId={lounge.id}
-      />))
+    let loungesArray = this.state.lounges.map((lounge, i) => {
+
+      let boxPic;
+      if (lounge.name === "Random Acts of Kindness") {
+        boxPic = "/images/flower.jpg";
+      }
+      else if (lounge.name === "Inspirational Quotes") {
+        boxPic = "/images/stars.jpg";
+      }
+      else if (lounge.name === "Personal Achievements") {
+        boxPic = "/images/jumping.jpg";
+      }
+  
+      return(
+        <LoungeBox
+          boxPic= {boxPic}
+          key={i}
+          loungeName={lounge.name}
+          loungeDescription={lounge.description}
+          loungeId={lounge.id}
+        />
+      );
+      
+    });
 
     return (
       <div>

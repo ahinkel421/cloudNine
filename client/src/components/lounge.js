@@ -93,52 +93,67 @@ export default class Lounge extends React.Component {
   }
 
   render() {
-    let loungesArray = this.state.lounges.map((lounge, i) => (
-      <LoungeBox
-        boxPic='iq-pic'
-        key={i}
-        picURL={lounge.picture}
-        loungeName={lounge.name}
-        loungeDescription={lounge.description}
-        loungeId={lounge.id}
-      />))
+    let loungesArray = this.state.lounges.map((lounge, i) => {
+
+      let boxPic;
+      if (lounge.name === "Random Acts of Kindness") {
+        boxPic = "/images/flower.jpg";
+      }
+      else if (lounge.name === "Inspirational Quotes") {
+        boxPic = "/images/stars.jpg";
+      }
+      else if (lounge.name === "Personal Achievements") {
+        boxPic = "/images/jumping.jpg";
+      }
+  
+      return(
+        <LoungeBox
+          boxPic= {boxPic}
+          key={i}
+          loungeName={lounge.name}
+          loungeDescription={lounge.description}
+          loungeId={lounge.id}
+        />
+      );
+      
+    });
 
 
     let post = this.state.lounge.posts[this.state.currentPost];
 
-  return (
-    <div>
+    return (
+      <div>
 
-      <section className="page-two">
+        <section className="page-two">
 
-        {/*Greeting section*/}
-        <PageHeader pic="rak-page-header" text="Random Acts of Kindness" />
+          {/*Greeting section*/}
+          <PageHeader pic="rak-page-header" text="Random Acts of Kindness" />
 
-        {/*Main posts section*/}
-        <section className="main-posts-section">
-          <h2 className="lounge-page-description">Feel free to share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse other peoples&#39; stories below and enjoy your stay!</h2>
-          <div className="user-post-section">
-            <img className="arrow left-arrow" src="../images/arrow.png" />
-            <img className="arrow right-arrow" src="../images/arrow-two.png" />
-            <UserPost post={post.content} username={post.name}/>
-            <button className="report-button">Report as innappropriate</button>
-          </div>
-          <form className="user-input-form">
-            <label className="form-label">Share your thoughts!</label>
-            <textarea ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
-            <label className="form-label">Nickname:</label>
-            <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
-          <button className="submit-button" onClick={e => this.createNewPost(e)}>Submit</button>
-          </form>
+          {/*Main posts section*/}
+          <section className="main-posts-section">
+            <h2 className="lounge-page-description">Feel free to share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse other peoples&#39; stories below and enjoy your stay!</h2>
+            <div className="user-post-section">
+              <img className="arrow left-arrow" src="../images/arrow.png" />
+              <img className="arrow right-arrow" src="../images/arrow-two.png" />
+              <UserPost post={post.content} username={post.name}/>
+              <button className="report-button">Report as innappropriate</button>
+            </div>
+            <form className="user-input-form">
+              <label className="form-label">Share your thoughts!</label>
+              <textarea ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
+              <label className="form-label">Nickname:</label>
+              <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
+            <button className="submit-button" onClick={e => this.createNewPost(e)}>Submit</button>
+            </form>
+          </section>
+          {/*Other-lounges-section*/}
+          <section className="lounges">
+            <h2 className="lounges-header">Other Lounges</h2>
+        {loungesArray}
+          </section>
         </section>
-        {/*Other-lounges-section*/}
-        <section className="lounges">
-          <h2 className="lounges-header">Other Lounges</h2>
-      {loungesArray}
-        </section>
-      </section>
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
