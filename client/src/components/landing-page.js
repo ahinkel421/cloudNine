@@ -11,26 +11,31 @@ export default class LandingPage extends React.Component {
     super(props)
     this.state = {lounges:[]}
   }
+
   componentDidMount(){
     var self = this
+    
     fetch('http://localhost:8080/lounges').then(function(response) {
       return response.json();
-    }).then(function(data) {
+    })
+    .then(function(data) {
       self.setState({
         lounges:data.lounges
       })
     });
   }
+
   render() {
 
     let loungesArray = this.state.lounges.map((lounge, i) => (
-                                      <LoungeBox
-                                              boxPic='iq-pic'
-                                              key={i}
-                                              picURL={lounge.picture}
-                                              loungeName={lounge.name}
-                                              loungeDescription={lounge.description}
-                                      />))
+      <LoungeBox
+        boxPic='iq-pic'
+        key={i}
+        picURL={lounge.picture}
+        loungeName={lounge.name}
+        loungeDescription={lounge.description}
+      />))
+
     return (
       <div>
       <Navbar />

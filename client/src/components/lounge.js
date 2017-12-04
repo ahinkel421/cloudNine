@@ -43,7 +43,7 @@ export default class Lounge extends React.Component {
 
   return (
     <div>
-      <Navbar />
+      <Navbar onClick={this.props.onClick} />
       <section className="page-two">
 
         {/*Greeting section*/}
@@ -61,6 +61,7 @@ export default class Lounge extends React.Component {
           <form className="user-input-form">
             <label className="form-label">Share your thoughts!</label>
             <textarea ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
+            <label className="form-label">Nickname:</label>
             <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
           <button className="submit-button" onClick={e => this.createNewPost(e)}>Submit</button>
           </form>
