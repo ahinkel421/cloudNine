@@ -14,7 +14,7 @@ export default class LandingPage extends React.Component {
 
   componentDidMount(){
     var self = this
-    
+
     fetch('http://localhost:8080/lounges').then(function(response) {
       return response.json();
     })

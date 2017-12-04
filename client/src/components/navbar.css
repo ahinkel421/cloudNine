@@ -13,6 +13,7 @@
 	font-size: 38px;
 	margin: 15px auto;
 	font-weight: normal;
+	display: inline-block;
 }
 
 .navbar-header:hover {
