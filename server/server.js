@@ -91,8 +91,12 @@ app.post('/lounges/:loungeId/', (req, res) => {
     return res.status(400).send(message);
   }
 
+  if(!("name" in req.body)) {
+    req.body.name = "Anonymous";
+  }
+
   let newPost = {
-    author: req.body.author,
+    name: req.body.name,
     content: req.body.content
   }
 

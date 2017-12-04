@@ -15,24 +15,42 @@ export default class Lounge extends React.Component {
   constructor(props){
     super(props);
     this.state = {lounge:{}}
+
+    // this.createNewPost = this.createNewPost.bind(this);
   }
+
   componentDidMount(){
     var self = this;
-    fetch(`http://localhost:8080/lounges/${LOUNGE_ID}`).then(function(response) {
+    fetch(`http://localhost:8080/lounges/${LOUNGE_ID}`)
+    .then(function(response) {
       return response.json();
-    }).then(function(data) {
+    })
+    .then(function(data) {
       self.setState({
         lounge:data.lounge
       })
     });
   }
 
-  createNewPost(e){
+
+  createNewPost(e) {
     e.preventDefault();
     var post = {
-      name:this.name.value,
+      name: this.name.value,
       content: this.content.value
     }
+    //POST request to API
+    fetch(`http://localhost:8080/lounges/${LOUNGE_ID}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: post.name,
+        content: post.content
+      })
+    })
 
     //TODO: POST post HERE TO BACKEND
 

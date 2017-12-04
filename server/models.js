@@ -7,7 +7,7 @@ const loungeSchema = mongoose.Schema({
   posts:[
     {
       content: {type: String, required: true},
-      author: {type: String, required: false},
+      name: {type: String, required: false},
     }
   ]
 });

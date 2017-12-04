@@ -13,14 +13,13 @@ export default class App extends React.Component {
     	this.state = {
     		landingPage: false
     	}
-    	this.handleClick = this.handleClick.bind(this);
+    	this.handleNavClick = this.handleNavClick.bind(this);
   	}
 
-  	handleClick(e) {
+  	handleNavClick(e) {
   		this.setState(
   			{landingPage: true}
   		);
-  		console.log(this.state.landingPage);
   	}
 
     render() {
@@ -34,7 +33,7 @@ export default class App extends React.Component {
     	else {
     		return (
     			<div>
-					<Lounge onClick={e => this.handleClick(e)}/>
+					<Lounge onClick={e => this.handleNavClick(e)}/>
 		  		</div>
     		);
     	}
