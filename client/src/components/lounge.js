@@ -1,7 +1,6 @@
 import React from 'react';
 import './lounge.css';
 
-
 import UserPost from './user-post';
 import LoungeBox from './lounge-box';
 import PageHeader from './page-header';
@@ -29,6 +28,10 @@ export default class Lounge extends React.Component {
 
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0,0);
+  }
+
   componentDidMount(){
     var self = this;
     fetch(`http://localhost:8080/lounges/${this.props.match.params.loungeId}`)
@@ -44,7 +47,6 @@ export default class Lounge extends React.Component {
           currentPost: random
         })
       }
-
     });
 
     fetch('http://localhost:8080/lounges').then(function(response) {
@@ -96,6 +98,7 @@ export default class Lounge extends React.Component {
     let loungesArray = this.state.lounges.map((lounge, i) => {
 
       let boxPic;
+
       if (lounge.name === "Random Acts of Kindness") {
         boxPic = "/images/flower.jpg";
       }
@@ -114,8 +117,7 @@ export default class Lounge extends React.Component {
           loungeDescription={lounge.description}
           loungeId={lounge.id}
         />
-      );
-      
+      ); 
     });
 
 

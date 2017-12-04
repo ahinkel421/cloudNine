@@ -12,6 +12,10 @@ export default class LandingPage extends React.Component {
     this.state = {lounges:[]}
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0,0);
+  }
+
   componentDidMount(){
     var self = this
 
@@ -22,7 +26,6 @@ export default class LandingPage extends React.Component {
       self.setState({
         lounges:data.lounges
       })
-      console.log(data.lounges)
     });
   }
 

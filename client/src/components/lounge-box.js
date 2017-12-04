@@ -12,17 +12,14 @@ export default function LoungeBox(props) {
 
 	return(
 		<div className="lounge-box">
-			<Link to={`/lounge/${props.loungeId}`}>
-    		<div className="lounge-pic" style={loungeBoxStyle}>
-
-    			<h3 className="lounge-pic-header">{props.loungeName}</h3>
-    		</div>
-    		<p className="lounge-description">
-    			{props.loungeDescription}
-    		</p>
+			<Link style={{ textDecoration: 'none' }} to={`/lounge/${props.loungeId}`}>
+    			<div className="lounge-pic" style={loungeBoxStyle}>
+    				<h3 className="lounge-pic-header">{props.loungeName}</h3>
+    			</div>
+    			<p className="lounge-description">
+    				{props.loungeDescription}
+    			</p>
 			</Link>
 		</div>
 	);
 }
-
-//style={`backgound-img:url(${props.boxPic})`}
