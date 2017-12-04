@@ -9,7 +9,7 @@ export default function App(props) {
 	//If landing page is true, display landing page, else display lounge
 	return (
 		<div>
-			<LandingPage />
+			<Lounge />
 		</div>
 	);
 }
