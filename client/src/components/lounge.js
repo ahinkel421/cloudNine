@@ -25,7 +25,6 @@ export default class Lounge extends React.Component {
       },
       currentPost: 0
     }
-
   }
 
   componentDidUpdate() {
@@ -33,7 +32,7 @@ export default class Lounge extends React.Component {
   }
 
   componentDidMount(){
-    var self = this;
+    let self = this;
     fetch(`http://localhost:8080/lounges/${this.props.match.params.loungeId}`)
     .then(function(response) {
       return response.json();
@@ -41,7 +40,7 @@ export default class Lounge extends React.Component {
     .then(function(lounge) {
       let max = lounge.posts.length - 1;
       let random = Math.floor(Math.random() * max);
-      if(random>0){
+      if (random>0) {
         self.setState({
           lounge: lounge,
           currentPost: random
@@ -77,11 +76,9 @@ export default class Lounge extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      //When posting from postman, anonymous works.
-      //When posting from browser, name is in request body is technically blank.
-      //If post.name === "" it equals "anonymous?" Or change on server?...
       body: JSON.stringify(post)
     })
+
     this.content.value=""
     this.name.value=""
   }
@@ -95,6 +92,9 @@ export default class Lounge extends React.Component {
   }
 
   render() {
+
+    //Handling lounge-box pics
+
     let loungesArray = this.state.lounges.map((lounge, i) => {
 
       let boxPic;
@@ -120,6 +120,26 @@ export default class Lounge extends React.Component {
       ); 
     });
 
+    //Handling lounge-header pics
+
+    let currentLoungeId = this.props.match.params.loungeId;
+    let currentHeaderPic, currentHeaderText, currentPageDescription;
+
+    if (currentLoungeId === "5a256aa083c9461868806486") {
+      currentHeaderPic = "rak-page-header";
+      currentHeaderText = "Random Acts of Kindness";
+      currentPageDescription = 'Share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse other peoples\' stories below! If you see any inappropriate content posted, please click the "Report as innappropriate" button and we will be sure to review and remove it if necessary. Thanks, enjoy your stay!';
+    }
+    else if (currentLoungeId === "5a256aca83c9461868806487") {
+      currentHeaderPic = "iq-page-header ";
+      currentHeaderText = "Inspirational Quotes";
+      currentPageDescription = 'Share your favorite inspirational quote(s), or browse through some quotes that other people have shared! If you see any inappropriate content posted, please click the "Report as innappropriate" button and we will be sure to review and remove it if necessary. Thanks, enjoy your stay!'
+    }
+    else if (currentLoungeId === "5a204645aa7ac461feffba81") {
+      currentHeaderPic = "pa-page-header ";
+      currentHeaderText = "Personal Achievements"
+      currentPageDescription = 'Share a personal achievement that you\'ve recently accomplished! Otherwise, browse for a bit and check out others have achieved recently. If you see any inappropriate content posted, please click the "Report as innappropriate" button and we will be sure to review and remove it if necessary. Thanks, enjoy your stay!';
+    }
 
     let post = this.state.lounge.posts[this.state.currentPost];
 
@@ -129,14 +149,14 @@ export default class Lounge extends React.Component {
         <section className="page-two">
 
           {/*Greeting section*/}
-          <PageHeader pic="rak-page-header" text="Random Acts of Kindness" />
+          <PageHeader pic={currentHeaderPic} text={currentHeaderText} />
 
           {/*Main posts section*/}
           <section className="main-posts-section">
-            <h2 className="lounge-page-description">Feel free to share a random act of kindness that you performed for someone, or that someone performed for you. Otherwise, browse other peoples&#39; stories below and enjoy your stay!</h2>
+            <h2 className="lounge-page-description">{currentPageDescription}</h2>
             <div className="user-post-section">
               <img className="arrow left-arrow" src="../images/arrow.png" />
-              <img className="arrow right-arrow" src="../images/arrow-two.png" />
+              <img className="arrow right-arrow" src="../images/arrow-two.png" onClick={e => this.randomPost()}/>
               <UserPost post={post.content} username={post.name}/>
               <button className="report-button">Report as innappropriate</button>
             </div>

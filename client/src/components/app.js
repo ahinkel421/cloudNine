@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
 	render() {
 		return(
-		<Router onUpdate={() => window.scrollTo(0, 0)}>
+		<Router>
 			<div className="app">
 				<Navbar onClick={this.props.onClick} />
 				<main>
@@ -30,6 +30,6 @@ export default class App extends React.Component {
 				<Footer />
 			</div>
 		</Router>
-	)
+		)	
 	}
 }

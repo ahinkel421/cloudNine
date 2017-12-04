@@ -24,18 +24,6 @@
 	color: #2E2E2E;
 }
 
-.rak-pic {
-	background-image: url('/images/flower.jpg');
-}
-
-.pa-pic {
-	background-image: url('/images/jumping.jpg');
-}
-
-.iq-pic {
-	background-image: url('/images/stars.jpg');
-}
-
 .lounge-pic:hover, .lounge-description:hover {
 	cursor: pointer;
 }
