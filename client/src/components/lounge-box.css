@@ -5,16 +5,18 @@
 }
 
 .lounge-pic {
-	padding: 65px;
+	padding: 57px;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 0;
+	transition-duration: .6s;
+  	transition-timing-function: ease;
 }
 
 .lounge-pic-header {
 	color: white;
-	font-size: 30px;
-	max-width: 170px;
+	font-size: 29px;
+	max-width: 220px;
 	margin: 0 auto;
 } 
 
@@ -22,6 +24,11 @@
 	font-size: 20px;
 	margin-top: 15px;
 	color: #2E2E2E;
+}
+
+.lounge-pic:hover,
+.lounge-pic:active {
+	letter-spacing: 2px;
 }
 
 .lounge-pic:hover, .lounge-description:hover {
