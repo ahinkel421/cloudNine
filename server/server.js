@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+var morgan = require('morgan')
 
 mongoose.Promise = global.Promise;
 
@@ -11,7 +12,7 @@ const cors = require('cors')
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-
+app.use(morgan('common'))
 
 //Used to get all of the different lounges
 app.get('/lounges', (req, res) => {

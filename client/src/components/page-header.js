@@ -3,11 +3,19 @@ import './page-header.css';
 
 export default class PageHeader extends React.Component {
 	render() {
+
+		let style = {
+			backgroundImage: `url('${this.props.image}')`
+		}
 		return(
-			/*<section className="greeting-section iq-page-header">*/
-			<section className={`greeting-section ${this.props.pic}`}>
+			<section className={`greeting-section page-header-img`} style={style}>
                 <h2 className="page-header">{this.props.text}</h2>
-            </section>
+        </section>
 		);
 	}
 }
+
+//
+// "/images/flower.jpg"
+// "/images/stars.jpg"
+// "/images/jumping.jpg"
