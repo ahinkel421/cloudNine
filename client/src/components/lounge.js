@@ -30,6 +30,9 @@ export default class Lounge extends React.Component {
     window.scrollTo(0,0);
   }
 
+  //Could the problem be that we are only getting the posts from the db when
+  //Lounge mounts, instead of when user-post mounts..?
+
   componentDidMount(){
     let self = this;
     fetch(`http://localhost:8080/lounges/${this.props.match.params.loungeId}`)
@@ -138,7 +141,7 @@ export default class Lounge extends React.Component {
     else if (currentLoungeId === "5a204645aa7ac461feffba81") {
       currentHeaderPic = "pa-page-header ";
       currentHeaderText = "Personal Achievements"
-      currentPageDescription = 'Share a personal achievement that you\'ve recently accomplished! Otherwise, browse for a bit and check out others have achieved recently. If you see any inappropriate content posted, please click the "Report as innappropriate" button and we will be sure to review and remove it if necessary. Thanks, enjoy your stay!';
+      currentPageDescription = 'Share a personal achievement that you\'ve recently accomplished! Otherwise, browse for a bit and check out what others have achieved recently. If you see any inappropriate content posted, please click the "Report as innappropriate" button and we will be sure to review and remove it if necessary. Thanks, enjoy your stay!';
     }
 
     let post = this.state.lounge.posts[this.state.currentPost];
