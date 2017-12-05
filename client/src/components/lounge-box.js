@@ -1,6 +1,5 @@
 import React from 'react';
 import './lounge-box.css';
-import {Link} from 'react-router-dom';
 
 
 export default function LoungeBox(props) {
@@ -10,7 +9,7 @@ export default function LoungeBox(props) {
 	}
 	function visitLounge(){
 		props.history.push(`/lounge/${props.loungeId}`);
-		 window.scrollTo(0,0);
+		window.scrollTo(0,0);
 	}
 	return(
 		<div className="lounge-box" onClick={e=>{visitLounge()}}   >

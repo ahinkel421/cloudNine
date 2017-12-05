@@ -47,7 +47,7 @@ app.get('/lounges/:loungeId', (req, res) => {
 // not used frontend.
 // use postman to create a lounge
 app.post('/lounges', (req, res) => {
-  const requiredFields = ['name', 'picture', 'description'];
+  const requiredFields = ['name', 'picture', 'description', 'briefDescription'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -62,6 +62,7 @@ app.post('/lounges', (req, res) => {
     name: req.body.name,
     picture: req.body.picture,
     description: req.body.description,
+    briefDescription: req.body.briefDescription
   })
   .then(lounge => res.status(201).json(lounge.apiRepr()))
   .catch(err => {

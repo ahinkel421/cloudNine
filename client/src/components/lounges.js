@@ -24,15 +24,12 @@ export default class Lounges extends React.Component {
 
   render(){
     let loungesArray = this.state.lounges.map((lounge, i) => {
-
-      let boxPic = "/images/flower.jpg";
-
       return(
         <LoungeBox
           picture= {lounge.picture}
           key={i}
           loungeName={lounge.name}
-          loungeDescription={lounge.description}
+          loungeDescription={lounge.briefDescription}
           loungeId={lounge.id}
           history={this.props.history}
           />

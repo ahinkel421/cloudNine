@@ -4,6 +4,7 @@ const loungeSchema = mongoose.Schema({
   name: {type: String, required:true},
   picture: {type: String, required: true},
   description: {type: String, required: true},
+  briefDescription: {type: String, required: true},
   posts:[
     {
       content: {type: String, required: true},
@@ -19,6 +20,7 @@ loungeSchema.methods.apiRepr = function() {
     name: this.name,
     picture: this.picture,
     description: this.description,
+    briefDescription: this.briefDescription,
     posts: this.posts
   };
 }
