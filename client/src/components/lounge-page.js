@@ -29,7 +29,7 @@ export default class LoungePage extends React.Component {
     let oldLoungeId = this.props.match.params.loungeId;
     let newLoungeId = newProps.match.params.loungeId;
 
-    if (newLoungeId !==oldLoungeId){
+    if (newLoungeId !== oldLoungeId){
       this.fetchLoungeInfo(newLoungeId)
     }
   }
@@ -57,20 +57,23 @@ export default class LoungePage extends React.Component {
     e.preventDefault();
     let content = this.content.value;
 
-    if(!content){
+    if (!content) {
       return this.setState({
-        error:"Content is required"
+        error:"*Share your thoughts before clicking submit!"
       })
-    }else{
+    }
+
+    else{
       this.setState({
         error:""
       })
     }
 
-    var post = {
+    let post = {
       name: this.name.value || "Anonymous",
       content: content
     }
+
     let loungeId = this.props.match.params.loungeId;
 
     //POST request to API
@@ -87,11 +90,13 @@ export default class LoungePage extends React.Component {
   }
 
   randomPost() {
-    let max = this.state.lounge.posts.length - 1;
+    console.log(this.state.lounge.posts.length);
+    let max = this.state.lounge.posts.length;
     let random = Math.floor(Math.random() * max);
     this.setState({
       currentPost: random
     });
+    console.log(random);
   }
 
   render() {
@@ -112,16 +117,16 @@ export default class LoungePage extends React.Component {
       <div className="user-post-section">
       <img alt="left" className="arrow left-arrow" src="../images/arrow.png" onClick={e => this.randomPost()} />
       <img alt="right" className="arrow right-arrow" src="../images/arrow-two.png" onClick={e => this.randomPost()} />
-      <UserPost post={post.content} username={post.name}/>
+      <UserPost post={post.content}  username={post.name}/>
       <button className="report-button"><a href="mailto:cloudnine.reports@gmail.com" className='report-anchor'>Report as innappropriate</a></button>
       </div>
       <form className="user-input-form">
         <label className="form-label">Share your thoughts!</label>
         <textarea  ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
-        <label className="form-label">Nickname:</label>
+        <label className="form-label">Name:</label>
         <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
-        <p>{this.state.error}</p>
-      <input type="submit" className="submit-button" onClick={e => this.createNewPost(e)}></input>
+        <p className="error-message">{this.state.error}</p>
+        <input type="submit" className="submit-button" onClick={e => this.createNewPost(e)}></input>
       </form>
       </section>
 

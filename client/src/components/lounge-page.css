@@ -91,6 +91,11 @@
 
 }
 
+.error-message {
+	color: #a80000;
+	margin-bottom: 20px;
+}
+
 .submit-button {
 	background-color: #2E2E2E;
 	color: white;
