@@ -70,17 +70,6 @@ app.post('/lounges', (req, res) => {
   });
 });
 
-
-
-
-
-// TODO; Now that you have a specific lounge, add a newPost to that lounge.
-      // Some ideas. Remember this is async (return a promise maybe?)
-      // lounge.posts.push(newPost)
-      // lounge.save.then(()=>{
-      // res.json( lounge.apiRepr() )
-      // })
-
 app.post('/lounges/:loungeId/', (req, res) => {
 
   const requiredFields = ['content'];

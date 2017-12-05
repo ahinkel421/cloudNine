@@ -29,7 +29,7 @@ export default class Lounges extends React.Component {
 
       return(
         <LoungeBox
-          boxPic= {boxPic}
+          picture= {lounge.picture}
           key={i}
           loungeName={lounge.name}
           loungeDescription={lounge.description}

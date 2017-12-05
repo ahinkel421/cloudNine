@@ -14,8 +14,3 @@ export default class PageHeader extends React.Component {
 		);
 	}
 }
-
-//
-// "/images/flower.jpg"
-// "/images/stars.jpg"
-// "/images/jumping.jpg"

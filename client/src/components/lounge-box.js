@@ -2,12 +2,11 @@ import React from 'react';
 import './lounge-box.css';
 import {Link} from 'react-router-dom';
 
-// TODO: do stuff with picURL
 
 export default function LoungeBox(props) {
 
 	let loungeBoxStyle = {
-		backgroundImage: `url(${props.boxPic})`
+		backgroundImage: `url(${props.picture})`
 	}
 	function visitLounge(){
 		props.history.push(`/lounge/${props.loungeId}`);
