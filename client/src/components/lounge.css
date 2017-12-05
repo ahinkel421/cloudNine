@@ -20,7 +20,7 @@
 .arrow {
 	width: 40px;
 	height: 40px;
-	top: 100px;
+	top: 75px;
 	position: absolute;
 }
 
@@ -32,11 +32,33 @@
 	right: 10px;
 }
 
+.right-arrow, .left-arrow {
+	transition-duration: .4s;
+  	transition-timing-function: ease;
+}
+
+.right-arrow:hover, .left-arrow:hover,
+.right-arrow:active, .left-arrow:active {
+	width: 50px;
+}
+
 .report-button {
 	background-color: #A80000;
 	color: white;
 	display: block;
 	margin: 0 auto;
+}
+
+.report-anchor {
+	text-decoration: none;
+	color: white;
+	transition-duration: .4s;
+  	transition-timing-function: ease;
+}
+
+.report-anchor:hover,
+.report-anchor:active {
+	letter-spacing: 1.5px;
 }
 
 .user-input-form {

@@ -23,7 +23,6 @@ export default class Lounge extends React.Component {
           }
         ]
       },
-      currentPost: 0
     }
   }
 
@@ -84,6 +83,7 @@ export default class Lounge extends React.Component {
   }
 
   randomPost() {
+    console.log(this.state.lounge.posts.length);
     let max = this.state.lounge.posts.length - 1;
     let random = Math.floor(Math.random() * max);
     this.setState({
@@ -155,10 +155,10 @@ export default class Lounge extends React.Component {
           <section className="main-posts-section">
             <h2 className="lounge-page-description">{currentPageDescription}</h2>
             <div className="user-post-section">
-              <img className="arrow left-arrow" src="../images/arrow.png" />
-              <img className="arrow right-arrow" src="../images/arrow-two.png" onClick={e => this.randomPost()}/>
+              <img className="arrow left-arrow" src="../images/arrow.png" onClick={e => this.randomPost()} />
+              <img className="arrow right-arrow" src="../images/arrow-two.png" onClick={e => this.randomPost()} />
               <UserPost post={post.content} username={post.name}/>
-              <button className="report-button">Report as innappropriate</button>
+              <button className="report-button"><a href="mailto:cloudnine.reports@gmail.com" className='report-anchor'>Report as innappropriate</a></button>
             </div>
             <form className="user-input-form">
               <label className="form-label">Share your thoughts!</label>
