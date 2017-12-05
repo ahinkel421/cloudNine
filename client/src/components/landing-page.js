@@ -1,22 +1,17 @@
 import React from 'react';
 import './landing-page.css';
-
-
 import Lounges from './lounges';
 import PageHeader from './page-header';
 
 export default class LandingPage extends React.Component {
 
-  componentDidUpdate() {
-    window.scrollTo(0,0);
-  }
 
 
   render() {
 
     return (
       <div>
-        <PageHeader pic="landing-page-header" text="Postitive mind. Positive life." />
+        <PageHeader image="/images/ocean.jpg" text="Postitive mind. Positive life." />
 
         {/*About section*/}
         <section className="about">
@@ -25,7 +20,7 @@ export default class LandingPage extends React.Component {
         </section>
         {/*End About section*/}
 
-        <Lounges header="Lounges" />
+        <Lounges header="Lounges" history={this.props.history}/>
       </div>
     );
   }

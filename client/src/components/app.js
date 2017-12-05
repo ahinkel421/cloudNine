@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route,} from 'react-router-dom';
 import LandingPage from './landing-page';
 import LoungePage from './lounge-page';
 import Navbar from './navbar'
@@ -12,9 +12,6 @@ export default class App extends React.Component {
 	//Initial state = landingPage: true
 	//If landing page is true, display landing page, else display lounge
 
-	constructor(props){
-		super(props);
-	}
 
 	render() {
 		return(

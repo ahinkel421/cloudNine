@@ -2,7 +2,6 @@ import React from 'react';
 import './lounge-page.css';
 
 import UserPost from './user-post';
-import LoungeBox from './lounge-box';
 import PageHeader from './page-header';
 import Lounges from './lounges';
 
@@ -25,9 +24,6 @@ export default class LoungePage extends React.Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   window.scrollTo(0,0);
-  // }
   componentWillReceiveProps(newProps){
     let oldLoungeId = this.props.match.params.loungeId;
     let newLoungeId = newProps.match.params.loungeId;
@@ -117,7 +113,7 @@ export default class LoungePage extends React.Component {
       </form>
       </section>
 
-      <Lounges header="Lounges" />
+      <Lounges header="Lounges" history={this.props.history}  />
 
       </section>
 

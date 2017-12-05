@@ -1,7 +1,6 @@
 import React from 'react';
 import './navbar.css';
 import LoungeBox from './lounge-box';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 export default class Lounges extends React.Component {
 
@@ -35,6 +34,7 @@ export default class Lounges extends React.Component {
           loungeName={lounge.name}
           loungeDescription={lounge.description}
           loungeId={lounge.id}
+          history={this.props.history}
           />
       );
 
