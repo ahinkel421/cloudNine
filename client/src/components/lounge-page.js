@@ -13,6 +13,7 @@ export default class LoungePage extends React.Component {
     super(props);
     this.state = {
       currentPost:0,
+      success:"",
       error:"",
       lounge: {
         posts:[
@@ -59,13 +60,15 @@ export default class LoungePage extends React.Component {
 
     if (!content) {
       return this.setState({
-        error:"*Share your thoughts before clicking submit!"
+        error:"*Share your thoughts before clicking submit!",
+        success: ""
       })
     }
 
-    else{
+    else {
       this.setState({
-        error:""
+        error:"",
+        success: "Your thoughts have been shared! Refresh the page and browse a bit to find your post."
       })
     }
 
@@ -125,8 +128,9 @@ export default class LoungePage extends React.Component {
         <textarea  ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
         <label className="form-label">Name:</label>
         <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
-        <p className="error-message">{this.state.error}</p>
         <input type="submit" className="submit-button" onClick={e => this.createNewPost(e)}></input>
+        <p className="error-message">{this.state.error}</p>
+        <p className="success-message">{this.state.success}</p>
       </form>
       </section>
 

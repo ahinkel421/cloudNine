@@ -9,3 +9,10 @@
 .username {
 	margin: 30px;
 }
+
+@media (max-width: 900px) {
+	.post {
+		font-size: 17px;
+		width: 70%;
+	}
+}
