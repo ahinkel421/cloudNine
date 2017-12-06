@@ -17,8 +17,6 @@
 	right: 20px;
 }
 
-/*Media Queries*/
-
 @media (max-width: 990px) {
 	.about {
 		text-align: center;

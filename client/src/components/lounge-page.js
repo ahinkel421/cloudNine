@@ -6,9 +6,6 @@ import PageHeader from './page-header';
 import Lounges from './lounges';
 
 export default class LoungePage extends React.Component {
-  //Need to keep track of which lounge user is in.
-  //If user is in Personal Achievements, render personal achievements
-  //Also, lounges at the bottom need to be the two OTHER lounges
   constructor(props){
     super(props);
     this.state = {
@@ -34,6 +31,7 @@ export default class LoungePage extends React.Component {
       this.fetchLoungeInfo(newLoungeId)
     }
   }
+
   componentDidMount(){
     let loungeId = this.props.match.params.loungeId;
     this.fetchLoungeInfo(loungeId)
@@ -54,6 +52,7 @@ export default class LoungePage extends React.Component {
       });
     });
   }
+
   createNewPost(e) {
     e.preventDefault();
     let content = this.content.value;
@@ -93,13 +92,11 @@ export default class LoungePage extends React.Component {
   }
 
   randomPost() {
-    console.log(this.state.lounge.posts.length);
     let max = this.state.lounge.posts.length;
     let random = Math.floor(Math.random() * max);
     this.setState({
       currentPost: random
     });
-    console.log(random);
   }
 
   render() {
@@ -108,36 +105,40 @@ export default class LoungePage extends React.Component {
 
     return (
       <div>
+        {/*Lounge page*/}
+        <section>
 
-      <section className="page-two">
+          {/*Greeting section*/}
+          <PageHeader image={lounge.picture} text={lounge.name} />
+          {/* End greeting section*/}
 
-      {/*Greeting section*/}
-      <PageHeader image={lounge.picture} text={lounge.name} />
+          {/*Main posts section*/}
+          <section className="main-posts-section">
+            <h2 className="lounge-page-description">{lounge.description}</h2>
+            <div className="user-post-section">
+              <img alt="left" className="arrow left-arrow" src="../images/arrow.png" onClick={e => this.randomPost()} />
+              <img alt="right" className="arrow right-arrow" src="../images/arrow-two.png" onClick={e => this.randomPost()} />
+              <UserPost post={post.content}  username={post.name}/>
+              <button className="report-button"><a href="mailto:cloudnine.reports@gmail.com" className='report-anchor'>Report as innappropriate</a></button>
+            </div>
+            <form className="user-input-form">
+              <label className="form-label">Share your thoughts!</label>
+              <textarea  ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
+              <label className="form-label">Name:</label>
+              <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
+              <input type="submit" className="submit-button" onClick={e => this.createNewPost(e)}></input>
+              <p className="error-message">{this.state.error}</p>
+              <p className="success-message">{this.state.success}</p>
+            </form>
+          </section>
+          {/*End main posts section*/}
 
-      {/*Main posts section*/}
-      <section className="main-posts-section">
-      <h2 className="lounge-page-description">{lounge.description}</h2>
-      <div className="user-post-section">
-      <img alt="left" className="arrow left-arrow" src="../images/arrow.png" onClick={e => this.randomPost()} />
-      <img alt="right" className="arrow right-arrow" src="../images/arrow-two.png" onClick={e => this.randomPost()} />
-      <UserPost post={post.content}  username={post.name}/>
-      <button className="report-button"><a href="mailto:cloudnine.reports@gmail.com" className='report-anchor'>Report as innappropriate</a></button>
-      </div>
-      <form className="user-input-form">
-        <label className="form-label">Share your thoughts!</label>
-        <textarea  ref={content => this.content = content} className="user-input-box" type="text" name="user-thoughts" placeholder="Write your thoughts here..."></textarea>
-        <label className="form-label">Name:</label>
-        <input className='name-input' ref={name => this.name = name} type="text" placeholder="Write your name here (optional)"></input>
-        <input type="submit" className="submit-button" onClick={e => this.createNewPost(e)}></input>
-        <p className="error-message">{this.state.error}</p>
-        <p className="success-message">{this.state.success}</p>
-      </form>
-      </section>
+          {/*Lounges section*/}
+          <Lounges header="Lounges" history={this.props.history}  />
+          {/*End lounges section*/}
 
-      <Lounges header="Lounges" history={this.props.history}  />
-
-      </section>
-
+        </section>
+      {/*End lounge page*/}
       </div>
     );
   }

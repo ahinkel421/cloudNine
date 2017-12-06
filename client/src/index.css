@@ -21,10 +21,6 @@ body {
 	margin: 10px auto 130px auto;
 }
 
-
-/*Media Queries*/
-
-
 @media (max-width: 1275px) {
 	.lounges {
 		padding-left: 0;
